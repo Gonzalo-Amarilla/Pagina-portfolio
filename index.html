@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gonzalo Amarilla - Desarrollador Web Frontend</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navegación -->
+    <nav id="navbar">
+      <div class="container">
+        <a href="#home" class="logo-link">
+          <img class="logo" src="img/logo-portfolio.jpg" alt="Gonzalo Amarilla Logo" />
+        </a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" onclick="closeMenu()">Inicio</a></li>
+          <li><a href="#proyectos" onclick="closeMenu()">Proyectos</a></li>
+          <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
+          <li><a href="#proceso" onclick="closeMenu()">Proceso</a></li>
+          <li><a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a></li>
+          <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="tagline">Desarrollo sitios web modernos y rápidos para negocios locales</p>
+        <h1>Gonzalo Amarilla</h1>
+        <p class="subtitle">Desarrollador Web Frontend</p>
+        <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
+      </div>
+    </section>
+
+<!-- Proyectos -->
+<section id="proyectos">
+  <h2 class="section-title reveal">Mis Proyectos</h2>
+  <div class="projects-grid">
+    
+    <!-- Proyecto 1: Página de Ajedrez -->
+    <a href="" target="_blank" class="project-card-link" rel="noopener noreferrer">
+      <div class="project-card reveal">
+        <div class="project-image">
+          <img src="img/pagina-ajedrez.jpg" alt="Página de Ajedrez">
+        </div>
+        <div class="project-content">
+          <h3>Página de Ajedrez</h3>
+          <p>Sitio web interactivo dedicado al ajedrez con diseño moderno y completamente responsive.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Proyecto 2: Landing Page Corporativa -->
+    <a href="https://clubphilidorajedrez.netlify.app" target="_blank" class="project-card-link" rel="noopener noreferrer">
+      <div class="project-card reveal">
+        <div class="project-image">
+          <img src="img/pagina-ajedrez.jpg" alt="Landing Page Corporativa">
+        </div>
+        <div class="project-content">
+          <h3>Landing Page Corporativa</h3>
+          <p>Página de presentación optimizada para conversión con animaciones suaves.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">SEO</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Proyecto 3: Catálogo de Productos -->
+    <a href="https://clubphilidorajedrez.netlify.app" target="_blank" class="project-card-link" rel="noopener noreferrer">
+      <div class="project-card reveal">
+        <div class="project-image">
+          <img src="img/pagina-ajedrez.jpg" alt="Catálogo de Productos">
+        </div>
+        <div class="project-content">
+          <h3>Catálogo de Productos</h3>
+          <p>Catálogo web moderno para mostrar productos con integración a WhatsApp.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+    <!-- Servicios -->
+    <section id="servicios" style="background: var(--light)">
+      <h2 class="section-title reveal">Servicios que Ofrezco</h2>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🎨</div>
+          <h3>Diseño Web Moderno</h3>
+          <p>Interfaces atractivas y profesionales que reflejan tu marca</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⚡</div>
+          <h3>Páginas Rápidas</h3>
+          <p>Sitios optimizados para carga veloz y mejor experiencia</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">📱</div>
+          <h3>Responsive Design</h3>
+          <p>Tu sitio se verá perfecto en cualquier dispositivo</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">💬</div>
+          <h3>Integración WhatsApp</h3>
+          <p>Conecta directamente con tus clientes al instante</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">📝</div>
+          <h3>Formularios de Contacto</h3>
+          <p>Recibe consultas de forma organizada y profesional</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🚀</div>
+          <h3>Landing Pages</h3>
+          <p>Páginas diseñadas para maximizar conversiones</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🔍</div>
+          <h3>Optimización SEO</h3>
+          <p>Mejora tu visibilidad en buscadores</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🌐</div>
+          <h3>Hosting y Dominio</h3>
+          <p>Configuración completa para tener tu sitio online</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso">
+      <h2 class="section-title reveal">Proceso de Trabajo</h2>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="step-number">1</div>
+          <h3>Consulta Inicial</h3>
+          <p>Hablamos de tu proyecto, objetivos y necesidades específicas</p>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-number">2</div>
+          <h3>Diseño del Prototipo</h3>
+          <p>Creo un diseño visual para que veas cómo quedará tu sitio</p>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-number">3</div>
+          <h3>Desarrollo del Sitio</h3>
+          <p>Construyo tu sitio con código limpio y optimizado</p>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-number">4</div>
+          <h3>Entrega + Soporte</h3>
+          <p>Tu sitio online y soporte continuo para cualquier ajuste</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi" style="background: var(--light)">
+      <h2 class="section-title reveal">Sobre Mí</h2>
+      <div class="about-content reveal">
+        <p>
+          Soy desarrollador web especializado en crear páginas modernas y adaptadas para negocios locales. Me enfoco en
+          diseño limpio, velocidad y buena experiencia para el usuario. Mi objetivo es ayudarte a tener presencia online
+          profesional que genere resultados.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact-section">
+      <h2 class="section-title" style="color: var(--white)">¿Hablamos de tu proyecto?</h2>
+      <p style="margin-bottom: 2rem; font-size: 1.1rem">
+        Estoy disponible para nuevos proyectos. Contactame por el medio que prefieras:
+      </p>
+      <div class="contact-buttons">
+        <a href="https://wa.me/5491112345678" class="contact-btn whatsapp" target="_blank"> 📱 WhatsApp </a>
+        <a href="https://instagram.com/tuusuario" class="contact-btn instagram" target="_blank"> 📸 Instagram </a>
+        <a href="mailto:gonzalo.amarilla@email.com" class="contact-btn email"> ✉️ Email </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Gonzalo Amarilla - Desarrollador Web Frontend</p>
+    </footer>
+
+    <script src="js/funciones.js"></script>
+  </body>
+</html>
