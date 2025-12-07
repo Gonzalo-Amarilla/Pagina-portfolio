@@ -1,4 +1,4 @@
-// Toggle menu móvil con animación mejorada
+// Toggle menú móvil con animación mejorada
 function toggleMenu() {
   const navLinks = document.getElementById("navLinks");
   const menuToggle = document.querySelector(".menu-toggle");
@@ -26,75 +26,86 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
-      const offsetTop = target.offsetTop - 70; // Ajuste para navbar fijo
+      const headerOffset = 80;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
-        top: offsetTop,
+        top: offsetPosition,
         behavior: "smooth",
       });
-      closeMenu(); // Cerrar menú después de click
+      closeMenu();
     }
   });
 });
 
 // Navbar scroll effect mejorado
-let lastScroll = 0;
 window.addEventListener("scroll", () => {
   const navbar = document.getElementById("navbar");
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > 50) {
+  
+  if (window.scrollY > 50) {
     navbar.classList.add("scrolled");
   } else {
     navbar.classList.remove("scrolled");
   }
-
-  lastScroll = currentScroll;
 });
-// Scroll reveal animation mejorada - activación más temprana
-function reveal() {
-  const reveals = document.querySelectorAll(".reveal");
 
-  reveals.forEach((element, index) => {
-    const windowHeight = window.innerHeight;
-    const elementTop = element.getBoundingClientRect().top;
-    const elementVisible = 50; // Reducido de 100 a 50 para activación más temprana
+// Intersection Observer para animaciones suaves
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -50px 0px",
+};
 
-    if (elementTop < windowHeight - elementVisible) {
-      setTimeout(() => {
-        element.classList.add("active");
-      }, index * 50); // Reducido de 100 a 50 para cascada más rápida
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
     }
   });
+}, observerOptions);
+
+// Observar todos los elementos con clase reveal
+document.querySelectorAll(".reveal").forEach((el) => {
+  observer.observe(el);
+});
+
+// Efecto Parallax en Hero
+const hero = document.querySelector('.hero');
+let ticking = false;
+
+function updateParallax() {
+  const scrolled = window.pageYOffset;
+  
+  if (hero && scrolled <= hero.offsetHeight) {
+    const parallaxSpeed = 0.5;
+    hero.style.setProperty('--scroll-y', scrolled * parallaxSpeed + 'px');
+  }
+  
+  ticking = false;
 }
 
-// Throttle para mejor rendimiento
-let ticking = false;
-window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
   if (!ticking) {
-    window.requestAnimationFrame(() => {
-      reveal();
-      ticking = false;
-    });
+    window.requestAnimationFrame(updateParallax);
     ticking = true;
   }
 });
 
 // Inicializar al cargar
 document.addEventListener("DOMContentLoaded", () => {
-  reveal();
+  // Activar elementos visibles al cargar
+  const reveals = document.querySelectorAll(".reveal");
+  reveals.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    if (rect.top < windowHeight * 0.85) {
+      el.classList.add("active");
+    }
+  });
   
-  // Animación inicial del hero
-  const heroContent = document.querySelector(".hero-content");
-  if (heroContent) {
-    setTimeout(() => {
-      heroContent.style.opacity = "1";
-    }, 100);
-  }
-  
-  // Activar reveals visibles al cargar
-  setTimeout(() => {
-    reveal();
-  }, 200);
+  // Inicializar parallax
+  hero.style.setProperty('--scroll-y', '0');
 });
 
 // Cerrar menú al hacer click fuera
