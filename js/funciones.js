@@ -39,17 +39,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Navbar scroll effect mejorado
-window.addEventListener("scroll", () => {
-  const navbar = document.getElementById("navbar");
-  
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
-
 // Intersection Observer para animaciones suaves
 const observerOptions = {
   threshold: 0.15,
@@ -64,38 +53,45 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observar todos los elementos con clase reveal
-document.querySelectorAll(".reveal").forEach((el) => {
-  observer.observe(el);
-});
-
-// Efecto Parallax en Hero
-const hero = document.querySelector('.hero');
+// Variable para optimización de scroll
 let ticking = false;
 
-function updateParallax() {
-  const scrolled = window.pageYOffset;
+// Efecto Parallax OPTIMIZADO en Hero + Navbar
+function handleScroll() {
+  const scrolled = window.scrollY;
   
-  if (hero && scrolled <= hero.offsetHeight) {
-    const parallaxSpeed = 0.5;
-    hero.style.setProperty('--scroll-y', scrolled * parallaxSpeed + 'px');
+  // Parallax del hero - Más suave y optimizado
+  document.documentElement.style.setProperty('--scroll-y', `${scrolled * 0.4}px`);
+  
+  // Navbar efecto scrolled
+  const navbar = document.getElementById("navbar");
+  if (scrolled > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
   }
   
   ticking = false;
 }
 
+// Listener de scroll optimizado con requestAnimationFrame
 window.addEventListener('scroll', () => {
   if (!ticking) {
-    window.requestAnimationFrame(updateParallax);
+    requestAnimationFrame(handleScroll);
     ticking = true;
   }
-});
+}, { passive: true });
 
 // Inicializar al cargar
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar parallax
+  document.documentElement.style.setProperty('--scroll-y', '0px');
+  
   // Activar elementos visibles al cargar
   const reveals = document.querySelectorAll(".reveal");
   reveals.forEach((el) => {
+    observer.observe(el);
+    
     const rect = el.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
@@ -103,9 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
       el.classList.add("active");
     }
   });
-  
-  // Inicializar parallax
-  hero.style.setProperty('--scroll-y', '0');
 });
 
 // Cerrar menú al hacer click fuera
