@@ -47,7 +47,7 @@ nav {
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(11, 24, 55, 0.95);
+  background: rgba(17, 35, 77, 0.95);
   backdrop-filter: blur(10px);
   padding: 1rem 0;
   z-index: 1000;
@@ -114,7 +114,6 @@ nav .container {
 .hero {
   background:  url("img/image.png");
   background-size: cover;
-  background-size: 100%;
   background-position: center;
   background-attachment: fixed;
   height: 100vh;
@@ -126,6 +125,7 @@ nav .container {
   position: relative;
   overflow: hidden;
 }
+
 
 .hero::before {
   content: "";
@@ -141,6 +141,7 @@ nav .container {
   opacity: 1;
   transform: translateY(var(--scroll-y, 0px));
   will-change: transform;
+      background: rgba(0, 0, 0, 0.3); /* bajale la intensidad */
 }
 
 .hero::after {
