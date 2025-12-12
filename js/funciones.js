@@ -112,3 +112,53 @@ document.addEventListener("click", (e) => {
     closeMenu();
   }
 });
+
+// AGREGAR AL FINAL DE funciones.js
+
+// Efecto Typewriter para el subtítulo del Hero
+function typewriterEffect() {
+  const subtitle = document.querySelector('.hero .subtitle');
+  if (!subtitle) return;
+  
+  const text = subtitle.textContent;
+  subtitle.textContent = '';
+  subtitle.style.opacity = '1';
+  
+  let charIndex = 0;
+  const speed = 80; // Velocidad de escritura en ms
+  
+  function type() {
+    if (charIndex < text.length) {
+      subtitle.textContent += text.charAt(charIndex);
+      charIndex++;
+      setTimeout(type, speed);
+    } else {
+      // Agregar cursor parpadeante al final
+      subtitle.classList.add('typing-complete');
+    }
+  }
+  
+  // Delay antes de comenzar la animación
+  setTimeout(type, 150);
+}
+
+// Modificar el DOMContentLoaded existente para incluir el typewriter
+document.addEventListener("DOMContentLoaded", () => {
+  // Código existente...
+  document.documentElement.style.setProperty('--scroll-y', '0px');
+  
+  const reveals = document.querySelectorAll(".reveal");
+  reveals.forEach((el) => {
+    observer.observe(el);
+    
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    if (rect.top < windowHeight * 0.85) {
+      el.classList.add("active");
+    }
+  });
+  
+  // AGREGAR ESTA LÍNEA
+  typewriterEffect();
+});
