@@ -929,7 +929,7 @@ section:not(.hero):not(.contact-section) {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.18); 
+  background-color: rgba(0, 0, 0, 0.11); 
   pointer-events: none;
 }
 
@@ -1154,12 +1154,12 @@ footer::before {
   right: 30px;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+  background: linear-gradient(135deg, #188a42 0%, #20ba5a 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+  box-shadow: 0 4px 20px rgba(31, 180, 86, 0.6);
   z-index: 999;
   transition: all 0.3s ease;
   color: white;
@@ -1168,7 +1168,7 @@ footer::before {
 
 .floating-whatsapp:hover {
   transform: scale(1.15);
-  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.8);
+  box-shadow: 0 6px 30px rgba(28, 158, 75, 0.8);
 }
 
 .floating-whatsapp:active {
